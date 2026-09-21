@@ -1,9 +1,9 @@
-import onewinqLogo from '@assets/onewinq_app_icon.png';
+import brandLogo from '@assets/onewinq_brand_logo.png';
 
 export function Brand() {
   return (
-    <a className="brand" href="#top" aria-label="OneWinq home" data-testid="link-brand">
-      <img className="brand-logo" src={onewinqLogo} alt="OneWinq logo" style={{ height: '38px', width: '38px', borderRadius: '50%', objectFit: 'cover' }} />
+    <a className="brand" href="#top" aria-label="OneWinq home" data-testid="link-brand" style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <img className="brand-logo" src={brandLogo} alt="OneWinq" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
     </a>
   );
 }
