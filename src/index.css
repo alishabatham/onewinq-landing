@@ -197,7 +197,7 @@
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
 .brand { display: inline-flex; align-items: center; text-decoration: none; color: var(--cream); font-weight: 700; letter-spacing: -.045em; font-size: 1.2rem; }
-.brand-logo { display: block; width: 137px; height: 36px; object-fit: contain; object-position: center; }
+.brand-logo { display: block; height: 46px; width: auto; object-fit: contain; object-position: center; }
 .site-header .brand-logo { filter: brightness(0) invert(1); }
 .brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--butter); color: var(--ink); font: 600 .82rem var(--app-font-mono); }
 .nav-links { display: flex; align-items: center; gap: 27px; }
@@ -494,26 +494,26 @@
   .announcement-link { font-size: .72rem; padding: 3px 10px; }
   
   .site-header { padding: 14px 0; }
-  .brand-logo { width: 110px; height: 30px; }
+  .brand-logo { height: 42px; width: auto; }
   .mobile-nav { top: 60px; left: 12px; right: 12px; }
   
-  .hero { padding-top: 75px; padding-bottom: 50px; }
+  .hero { padding-top: 30px; padding-bottom: 50px; }
   .launch-hero-card { margin-bottom: 16px; padding: 6px 12px; gap: 8px; max-width: 100%; flex-wrap: wrap; justify-content: center; }
   .launch-badge { padding: 4px 10px; font-size: .7rem; }
   .launch-date-text { font-size: .85rem; }
   
   .hero h1 { max-width: 100%; font-size: clamp(2.1rem, 9.5vw, 3rem); line-height: 1.06; }
   .hero-copy { font-size: .9rem; line-height: 1.45; }
-  .hero-actions { align-items: stretch; flex-direction: column; width: 100%; max-width: 100%; gap: 10px; }
-  .hero-actions button, .hero-actions a { justify-content: center; width: 100%; text-align: center; }
+  .hero-actions { display: flex; flex-direction: row; align-items: center; justify-content: space-between; width: 100%; max-width: 100%; gap: 8px; }
+  .hero-actions button, .hero-actions a, .hero-actions .header-cta, .hero-actions .button-light { flex: 1; min-width: 0; padding: 11px 8px; font-size: 0.74rem; justify-content: center; text-align: center; white-space: nowrap; }
   
-  .hero-visual { min-height: 330px; margin-top: 10px; }
-  .orbit { top: 10px; width: 270px; height: 270px; }
-  .profile-card { top: 20px; width: min(280px, 86vw); min-height: 310px; padding: 16px; border-radius: 18px; }
-  .profile-card .avatar { margin-top: 24px; }
+  .hero-visual { position: relative; min-height: 350px; margin-top: 20px; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+  .orbit { left: 50%; transform: translateX(-50%); top: 10px; width: 270px; height: 270px; }
+  .profile-card { position: relative; top: 0; right: auto; left: auto; margin: 0 auto; width: min(300px, 90vw); min-height: auto; padding: 18px 16px; border-radius: 20px; transform: rotate(0deg); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+  .profile-card .avatar { margin-top: 20px; }
   .float-pill { font-size: .6rem; padding: 6px 10px; }
-  .pill-one { left: -4px; top: 10px; }
-  .pill-two { right: -4px; bottom: 10px; }
+  .pill-one { left: 4px; top: 10px; }
+  .pill-two { right: 4px; bottom: 10px; }
   
   .mode-tabs { gap: 8px; }
   .mode-tab { padding: 14px 16px; }
