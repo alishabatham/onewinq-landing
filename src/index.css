@@ -486,69 +486,94 @@
   .final-action { margin-top: 28px; }
 }
 
-@media (max-width: 520px) {
-  .container { width: min(100% - 24px, 100%); }
-  .top-announcement-bar { padding: 6px 10px; font-size: .75rem; }
-  .announcement-inner { gap: 6px; text-align: center; }
-  .announcement-text { font-size: .72rem; }
-  .announcement-link { font-size: .72rem; padding: 3px 10px; }
+@media (max-width: 768px) {
+  .section { padding: 45px 0; }
+  .container { width: min(100% - 28px, 100%); }
   
-  .site-header { padding: 14px 0; }
-  .brand-logo { height: 42px; width: auto; }
-  .mobile-nav { top: 60px; left: 12px; right: 12px; }
+  .site-header { padding: 12px 0; }
+  .brand-logo { height: 38px; width: auto; }
+  .mobile-nav { top: 56px; left: 12px; right: 12px; }
   
-  .hero { padding-top: 30px; padding-bottom: 50px; }
-  .launch-hero-card { margin-bottom: 16px; padding: 6px 12px; gap: 8px; max-width: 100%; flex-wrap: wrap; justify-content: center; }
+  .hero { padding-top: 30px; padding-bottom: 45px; }
+  .launch-hero-card { margin-bottom: 14px; padding: 6px 12px; gap: 8px; max-width: 100%; flex-wrap: wrap; justify-content: center; }
   .launch-badge { padding: 4px 10px; font-size: .7rem; }
-  .launch-date-text { font-size: .85rem; }
+  .launch-date-text { font-size: .82rem; }
   
-  .hero h1 { max-width: 100%; font-size: clamp(2.1rem, 9.5vw, 3rem); line-height: 1.06; }
-  .hero-copy { font-size: .9rem; line-height: 1.45; }
+  .hero h1 { max-width: 100%; font-size: clamp(2rem, 8.5vw, 2.7rem); line-height: 1.05; }
+  .hero-copy { font-size: .88rem; line-height: 1.45; }
   .hero-actions { display: flex; flex-direction: row; align-items: center; justify-content: space-between; width: 100%; max-width: 100%; gap: 8px; }
-  .hero-actions button, .hero-actions a, .hero-actions .header-cta, .hero-actions .button-light { flex: 1; min-width: 0; padding: 11px 8px; font-size: 0.74rem; justify-content: center; text-align: center; white-space: nowrap; }
+  .hero-actions button, .hero-actions a, .hero-actions .header-cta, .hero-actions .button-light { flex: 1; min-width: 0; padding: 10px 6px; font-size: 0.72rem; justify-content: center; text-align: center; white-space: nowrap; }
   
-  .hero-visual { position: relative; min-height: 350px; margin-top: 20px; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-  .orbit { left: 50%; transform: translateX(-50%); top: 10px; width: 270px; height: 270px; }
-  .profile-card { position: relative; top: 0; right: auto; left: auto; margin: 0 auto; width: min(300px, 90vw); min-height: auto; padding: 18px 16px; border-radius: 20px; transform: rotate(0deg); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
-  .profile-card .avatar { margin-top: 20px; }
-  .float-pill { font-size: .6rem; padding: 6px 10px; }
-  .pill-one { left: 4px; top: 10px; }
-  .pill-two { right: 4px; bottom: 10px; }
+  .hero-visual { position: relative; min-height: 320px; margin-top: 15px; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+  .orbit { left: 50%; transform: translateX(-50%); top: 5px; width: 240px; height: 240px; }
+  .profile-card { position: relative; top: 0; right: auto; left: auto; margin: 0 auto; width: min(280px, 88vw); min-height: auto; padding: 16px; border-radius: 18px; transform: rotate(0deg); box-shadow: 0 10px 25px rgba(0,0,0,0.22); }
+  .profile-card .avatar { margin-top: 16px; width: 64px; height: 64px; font-size: 1.6rem; }
+  .profile-name { font-size: 1.4rem; margin: 10px 0 2px; }
+  .profile-role { font-size: 0.72rem; }
+  .profile-line { margin: 16px 0 12px; }
+  .profile-tags span { padding: 5px 8px; font-size: .58rem; }
+  .float-pill { font-size: .58rem; padding: 5px 8px; }
+  .pill-one { left: 2px; top: 5px; }
+  .pill-two { right: 2px; bottom: 5px; }
   
-  .mode-tabs { gap: 8px; }
-  .mode-tab { padding: 14px 16px; }
-  .mode-preview { padding: 18px; border-radius: 18px; }
-  .preview-content { grid-template-columns: 1fr; gap: 12px; }
-  .preview-content h3 { font-size: clamp(1.5rem, 6vw, 2.2rem); line-height: 1.1; }
+  .mode-tabs { gap: 6px; }
+  .mode-tab { padding: 10px 12px; font-size: 0.78rem; }
+  .mode-preview { padding: 16px; border-radius: 16px; }
+  .preview-content { grid-template-columns: 1fr; gap: 10px; }
+  .preview-content h3 { font-size: clamp(1.4rem, 5.5vw, 2rem); line-height: 1.1; }
   .preview-art { display: none; }
   
-  .moment-grid { grid-template-columns: 1fr; gap: 14px; }
-  .moment-card, .moment-card.tall { min-height: auto; padding: 18px; border-radius: 16px; }
+  .moment-grid { grid-template-columns: 1fr; gap: 12px; }
+  .moment-card, .moment-card.tall { min-height: auto; padding: 16px; border-radius: 14px; }
+  .moment-card h3 { font-size: 1.4rem; margin-top: 12px; }
+  .moment-card p { font-size: 0.8rem; }
   
-  .share-art { min-height: 360px; }
-  .phone { right: 50%; transform: translateX(50%); width: 200px; height: 360px; }
-  .nfc-card { right: 50%; transform: translateX(50%); bottom: -20px; width: 190px; height: 110px; }
+  .share-grid { grid-template-columns: 1fr; gap: 24px; }
+  .share-copy h2 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 0.95; margin: 10px 0 14px; }
+  .share-copy p { font-size: 0.86rem; line-height: 1.48; max-width: 100%; }
+  .share-art { display: flex; flex-direction: column; align-items: center; min-height: auto; margin-top: 15px; position: relative; width: 100%; }
+  .phone { position: relative; right: auto; top: 0; transform: rotate(-2deg); width: 185px; height: 320px; padding: 6px; border: 4px solid #6F2C8F; border-radius: 26px; margin: 0 auto; box-shadow: 0 12px 28px rgba(0,0,0,0.3); }
+  .phone-screen { padding: 12px; border-radius: 18px; }
+  .phone-notch { width: 55px; height: 12px; margin: -6px auto 10px; }
+  .phone-screen .avatar { width: 42px; height: 42px; font-size: 1.1rem; }
+  .phone-screen h4 { font-size: 1rem; margin: 4px 0 1px; }
+  .phone-screen p { font-size: 0.58rem; }
+  .phone-screen hr { margin: 10px 0; }
+  .share-row { margin: 5px 0; gap: 6px; }
+  .share-controls { gap: 5px; margin-top: 8px; }
+  .share-control { padding: 5px 7px; font-size: 0.52rem; }
+  .nfc-card { position: relative; bottom: auto; right: auto; transform: rotate(4deg); width: 165px; height: 95px; padding: 10px 12px; margin: -35px auto 0; z-index: 5; box-shadow: 0 10px 25px rgba(0,0,0,0.35); }
+  .nfc-card b { font-size: 0.8rem; }
+  .nfc-card small { font-size: 0.5rem; bottom: 8px; left: 10px; }
   
-  .steps { grid-template-columns: 1fr; gap: 12px; }
-  .step { min-height: auto; padding: 16px 0; border-right: none !important; border-bottom: 1px solid var(--line); }
+  .journey-intro { grid-template-columns: 1fr; gap: 14px; margin-bottom: 30px; }
+  .journey h2 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 0.95; }
+  .steps { grid-template-columns: 1fr; gap: 10px; }
+  .step { min-height: auto; padding: 14px 0; border-right: none !important; border-bottom: 1px solid var(--line); }
   .step + .step { padding-left: 0; }
-  .step h3 { margin-top: 12px; font-size: 1.15rem; }
+  .step h3 { margin-top: 10px; font-size: 1.1rem; }
+  .step p { font-size: 0.8rem; max-width: 100%; }
   
-  .network-board { min-height: 300px; transform: scale(.85); transform-origin: top center; width: 100%; margin: 0 auto; }
-  .enterprise-features { grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
-  .enterprise-wrap { padding: 20px 16px; }
+  .network-layout { grid-template-columns: 1fr; gap: 20px; }
+  .network h2 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 0.95; max-width: 100%; }
+  .network-board { min-height: 240px; transform: scale(.72); transform-origin: top center; width: 100%; margin: 0 auto; }
   
-  .faq-layout { gap: 24px; }
-  .faq-question { padding: 16px 0; font-size: .95rem; }
-  .faq-answer { padding: 0 0 16px 0; font-size: .82rem; }
+  .enterprise-wrap { padding: 22px 14px; border-radius: 16px; }
+  .enterprise h2 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 0.95; }
+  .product-context { grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px; }
+  .enterprise-features { grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
   
-  .final-cta { padding: 50px 0 35px; }
-  .final-cta h2 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  .faq-layout { gap: 20px; }
+  .faq-question { padding: 14px 0; font-size: .9rem; }
+  .faq-answer { padding: 0 0 14px 0; font-size: .8rem; }
   
-  .footer-inner { align-items: center; text-align: center; flex-direction: column; gap: 16px; }
-  .footer-inner .brand-logo { width: 110px; }
-  .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-  .copyright { text-align: center; }
+  .final-cta { padding: 40px 0 30px; }
+  .final-cta h2 { font-size: clamp(1.8rem, 7.5vw, 2.4rem); }
+  
+  .footer-inner { align-items: center; text-align: center; flex-direction: column; gap: 14px; }
+  .footer-inner .brand-logo { height: 36px; width: auto; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .copyright { text-align: center; font-size: 0.75rem; }
   .toast-note { right: 12px; bottom: 12px; left: 12px; justify-content: center; text-align: center; font-size: .75rem; }
 }
 
