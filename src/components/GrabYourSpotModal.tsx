@@ -37,7 +37,16 @@ export function GrabYourSpotModal({ isOpen, onClose }: GrabYourSpotModalProps) {
         }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let data: any = {};
+      
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        console.error('Server returned non-JSON response:', text);
+        throw new Error('Server returned invalid response. Please try again.');
+      }
 
       if (!response.ok || !data.success) {
         throw new Error(data.error || 'Failed to send email reservation.');
