@@ -516,11 +516,25 @@
   .pill-one { left: 2px; top: 5px; }
   .pill-two { right: 2px; bottom: 5px; }
   
-  .mode-tabs { gap: 6px; }
-  .mode-tab { padding: 10px 12px; font-size: 0.78rem; }
-  .mode-preview { padding: 16px; border-radius: 16px; }
-  .preview-content { grid-template-columns: 1fr; gap: 10px; }
-  .preview-content h3 { font-size: clamp(1.4rem, 5.5vw, 2rem); line-height: 1.1; }
+  .section-heading { margin-bottom: 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .section-heading h2 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); line-height: 1.05; }
+  .section-heading p { font-size: 0.84rem; max-width: 100%; }
+
+  .mode-layout { grid-template-columns: 1fr; gap: 14px; }
+  .mode-tabs { display: flex; flex-direction: row; gap: 6px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+  .mode-tab { flex: 1; padding: 8px 6px; border-bottom: 0; text-align: center; justify-content: center; flex-direction: column; align-items: center; border-radius: 10px; background: rgba(123, 44, 191, 0.05); }
+  .mode-tab.active { padding-left: 6px; background: rgba(123, 44, 191, 0.15); }
+  .mode-tab::before { display: none; }
+  .mode-tab strong { font-size: 0.82rem; }
+  .mode-tab small { font-size: 0.58rem; margin-top: 2px; }
+  .mode-tab svg { display: none; }
+
+  .mode-preview { min-height: auto; padding: 18px 16px; border-radius: 16px; }
+  .preview-content { grid-template-columns: 1fr; min-height: auto; gap: 10px; }
+  .preview-content h3 { font-size: 1.45rem; margin: 8px 0; line-height: 1.1; }
+  .preview-content p { font-size: 0.8rem; line-height: 1.42; max-width: 100%; margin: 6px 0 12px; }
+  .preview-buttons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .preview-buttons span { padding: 5px 8px; font-size: 0.58rem; }
   .preview-art { display: none; }
   
   .moment-grid { grid-template-columns: 1fr; gap: 12px; }
