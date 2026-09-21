@@ -27,6 +27,7 @@ export function Header({ onCta }: HeaderProps) {
         <div className="container nav-inner">
           <Brand />
           <nav className="nav-links" aria-label="Main navigation">
+            <a href="#why-onewinq" data-testid="link-why-onewinq">Why OneWinq</a>
             <a href="#profiles" data-testid="link-profiles">Profiles</a>
             <a href="#sharing" data-testid="link-sharing">Sharing</a>
             <a href="#network" data-testid="link-network">Network</a>
@@ -46,6 +47,7 @@ export function Header({ onCta }: HeaderProps) {
         </div>
         {menuOpen && (
           <nav className="mobile-nav" aria-label="Mobile navigation">
+            <a href="#why-onewinq" onClick={() => navigate('why-onewinq')} data-testid="mobile-link-why-onewinq">Why OneWinq</a>
             <a href="#profiles" onClick={() => navigate('profiles')} data-testid="mobile-link-profiles">Profiles</a>
             <a href="#sharing" onClick={() => navigate('sharing')} data-testid="mobile-link-sharing">Sharing</a>
             <a href="#network" onClick={() => navigate('network')} data-testid="mobile-link-network">Network</a>

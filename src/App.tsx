@@ -10,6 +10,7 @@ import { GrabYourSpotModal } from '@/components/GrabYourSpotModal';
 import { Hero } from '@/components/sections/Hero';
 import { Ticker } from '@/components/sections/Ticker';
 import { Intro } from '@/components/sections/Intro';
+import { WhyOneWinq } from '@/components/sections/WhyOneWinq';
 import { Profiles } from '@/components/sections/Profiles';
 import { Moments } from '@/components/sections/Moments';
 import { Sharing } from '@/components/sections/Sharing';
@@ -53,6 +54,7 @@ function Home() {
       <Hero onCta={openModal} />
       <Ticker />
       <Intro />
+      <WhyOneWinq />
       <Profiles />
       <Moments />
       <Sharing />
