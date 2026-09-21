@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { CheckCircle2, Loader2, Sparkles, X } from 'lucide-react';
+import { CheckCircle2, Loader2, X } from 'lucide-react';
 
 interface GrabYourSpotModalProps {
   isOpen: boolean;
@@ -9,7 +9,6 @@ interface GrabYourSpotModalProps {
 export function GrabYourSpotModal({ isOpen, onClose }: GrabYourSpotModalProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [handle, setHandle] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -32,7 +31,6 @@ export function GrabYourSpotModal({ isOpen, onClose }: GrabYourSpotModalProps) {
         body: JSON.stringify({
           name,
           email,
-          handle,
           message,
         }),
       });
@@ -66,7 +64,6 @@ export function GrabYourSpotModal({ isOpen, onClose }: GrabYourSpotModalProps) {
     setErrorMessage(null);
     setName('');
     setEmail('');
-    setHandle('');
     setMessage('');
     onClose();
   };
@@ -89,7 +86,7 @@ export function GrabYourSpotModal({ isOpen, onClose }: GrabYourSpotModalProps) {
             </p>
 
             <div className="success-badge">
-              <Sparkles size={16} /> Launching 01 October 2026
+              Launching 01 October 2026
             </div>
             <button className="button-dark modal-done-btn" onClick={handleResetAndClose}>
               Back to OneWinq
@@ -132,20 +129,6 @@ export function GrabYourSpotModal({ isOpen, onClose }: GrabYourSpotModalProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="spot-handle">Desired OneWinq Handle</label>
-                <div className="handle-input-wrap">
-                  <span className="handle-prefix">onewinq.me/</span>
-                  <input
-                    id="spot-handle"
-                    type="text"
-                    placeholder="alex"
-                    value={handle}
-                    onChange={(e) => setHandle(e.target.value.toLowerCase().replace(/[^a-z0-9_-]/g, ''))}
-                  />
-                </div>
               </div>
 
               <div className="form-group">
