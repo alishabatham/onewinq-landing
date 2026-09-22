@@ -32,7 +32,7 @@ export function Footer({ onCta }: FooterProps) {
             <a href="mailto:support@onewinq.com" data-testid="footer-link-email">support@onewinq.com</a>
             <a href="#contact" data-testid="footer-link-contact">Contact Us</a>
           </div>
-          <div className="copyright">© 2026 OneWinq</div>
+          <div className="copyright">© 2025 OneWinq</div>
         </div>
       </footer>
     </>
