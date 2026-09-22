@@ -16,7 +16,7 @@ export function Hero({ onCta }: HeroProps) {
           <p className="hero-copy">OneWinq gives every side of you a place to live — and lets you choose which one enters the room.</p>
           <div className="hero-actions">
             <button className="header-cta" onClick={onCta} data-testid="hero-button-create">
-              Create your OneWinq <ArrowRight size={15} />
+              Get your Card <ArrowRight size={15} />
             </button>
             <a className="button-light" href="#how-it-works" data-testid="hero-link-how-it-works">
               See how it works <ArrowDownRight size={15} />
