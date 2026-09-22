@@ -1825,20 +1825,20 @@
 
 .contact-eyebrow {
   font-family: var(--app-font-mono);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: #7b2cbf;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .contact-title {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
   color: #09070d;
   line-height: 1.05;
-  margin: 0 0 16px;
+  margin: 0 0 14px;
 }
 
 .contact-title em {
@@ -1848,36 +1848,36 @@
 }
 
 .contact-desc {
-  font-size: 0.96rem;
+  font-size: 0.86rem;
   color: #56475f;
-  line-height: 1.55;
-  margin: 0 0 28px;
+  line-height: 1.5;
+  margin: 0 0 22px;
 }
 
 /* Prominent Email Box */
 .contact-email-card {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   background: #ffffff;
   border: 1.5px solid #e9d5ff;
-  border-radius: 18px;
-  padding: 18px 22px;
-  margin-bottom: 28px;
-  box-shadow: 0 8px 24px rgba(123, 44, 191, 0.08);
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 20px rgba(123, 44, 191, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-email-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(123, 44, 191, 0.14);
+  box-shadow: 0 10px 24px rgba(123, 44, 191, 0.12);
   border-color: #c77dff;
 }
 
 .email-icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   background: #f3ebfc;
   color: #7b2cbf;
   display: grid;
@@ -1893,7 +1893,7 @@
 }
 
 .email-label {
-  font-size: 0.75rem;
+  font-size: 0.70rem;
   font-family: var(--app-font-mono);
   color: #64748b;
   text-transform: uppercase;
@@ -1902,7 +1902,7 @@
 }
 
 .email-link {
-  font-size: clamp(0.95rem, 4vw, 1.25rem);
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
   font-weight: 800;
   color: #7b2cbf;
   text-decoration: none;
@@ -1919,14 +1919,14 @@
 .contact-perks {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .perk-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
+  gap: 8px;
+  font-size: 0.80rem;
   color: #475569;
 }
 
@@ -1938,35 +1938,45 @@
 .contact-form-card {
   background: #ffffff;
   border: 1.5px solid rgba(228, 216, 236, 0.8);
-  border-radius: 24px;
-  padding: 32px 28px;
-  box-shadow: 0 14px 40px rgba(9, 7, 13, 0.06);
+  border-radius: 20px;
+  padding: 24px 22px;
+  box-shadow: 0 12px 32px rgba(9, 7, 13, 0.05);
 }
 
 .form-heading {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #09070d;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.form-group input,
+.form-group textarea,
 .contact-select-input {
   width: 100%;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-  font-size: 0.92rem;
+  border-radius: 10px;
+  font-size: 0.84rem;
   color: #09070d;
   background: #f8fafc;
-  cursor: pointer;
   transition: all 0.2s ease;
+  font-family: inherit;
 }
 
+.form-group input:focus,
+.form-group textarea:focus,
 .contact-select-input:focus {
   outline: none;
   border-color: #7b2cbf;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.14);
+  box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.12);
 }
 
 .contact-submit-btn {
@@ -1975,16 +1985,16 @@
   color: #ffffff;
   border: none;
   border-radius: 999px;
-  padding: 14px 24px;
-  font-size: 0.95rem;
+  padding: 11px 20px;
+  font-size: 0.86rem;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  margin-top: 8px;
-  box-shadow: 0 6px 20px rgba(12, 10, 18, 0.18);
+  margin-top: 6px;
+  box-shadow: 0 6px 18px rgba(12, 10, 18, 0.16);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
