@@ -28,10 +28,10 @@ export function Header({ onCta }: HeaderProps) {
           <Brand />
           <nav className="nav-links" aria-label="Main navigation">
             <a href="#why-onewinq" data-testid="link-why-onewinq">Why OneWinq</a>
+            <a href="#cards" data-testid="link-cards">Smart Cards</a>
             <a href="#profiles" data-testid="link-profiles">Profiles</a>
             <a href="#sharing" data-testid="link-sharing">Sharing</a>
-            <a href="#network" data-testid="link-network">Network</a>
-            <a href="#enterprise" data-testid="link-enterprise">For Organizations</a>
+            <a href="#contact" data-testid="link-contact">Contact Us</a>
           </nav>
           <button className="header-cta" onClick={onCta} data-testid="button-get-started">
             Get started <ArrowRight size={14} />
@@ -48,10 +48,10 @@ export function Header({ onCta }: HeaderProps) {
         {menuOpen && (
           <nav className="mobile-nav" aria-label="Mobile navigation">
             <a href="#why-onewinq" onClick={() => navigate('why-onewinq')} data-testid="mobile-link-why-onewinq">Why OneWinq</a>
+            <a href="#cards" onClick={() => navigate('cards')} data-testid="mobile-link-cards">Smart Cards</a>
             <a href="#profiles" onClick={() => navigate('profiles')} data-testid="mobile-link-profiles">Profiles</a>
             <a href="#sharing" onClick={() => navigate('sharing')} data-testid="mobile-link-sharing">Sharing</a>
-            <a href="#network" onClick={() => navigate('network')} data-testid="mobile-link-network">Network</a>
-            <a href="#enterprise" onClick={() => navigate('enterprise')} data-testid="mobile-link-enterprise">For Organizations</a>
+            <a href="#contact" onClick={() => navigate('contact')} data-testid="mobile-link-contact">Contact Us</a>
             <button className="header-cta" onClick={() => { setMenuOpen(false); onCta(); }} data-testid="mobile-button-get-started">
               Get started <ArrowRight size={14} />
             </button>

@@ -11,6 +11,7 @@ import { Hero } from '@/components/sections/Hero';
 import { Ticker } from '@/components/sections/Ticker';
 import { Intro } from '@/components/sections/Intro';
 import { WhyOneWinq } from '@/components/sections/WhyOneWinq';
+import { Cards, type CardType } from '@/components/sections/Cards';
 import { Profiles } from '@/components/sections/Profiles';
 import { Moments } from '@/components/sections/Moments';
 import { Sharing } from '@/components/sections/Sharing';
@@ -18,6 +19,7 @@ import { Journey } from '@/components/sections/Journey';
 import { NetworkSection } from '@/components/sections/NetworkSection';
 import { Enterprise } from '@/components/sections/Enterprise';
 import { FAQ } from '@/components/sections/FAQ';
+import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/sections/Footer';
 
 import './index.css';
@@ -26,8 +28,10 @@ const queryClient = new QueryClient();
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<CardType>('pvc');
 
-  const openModal = () => {
+  const openModal = (cardId: CardType = 'pvc') => {
+    setSelectedCard(cardId);
     setModalOpen(true);
   };
 
@@ -51,10 +55,11 @@ function Home() {
 
   return (
     <main className="page-shell">
-      <Hero onCta={openModal} />
+      <Hero onCta={() => openModal('pvc')} />
       <Ticker />
       <Intro />
       <WhyOneWinq />
+      <Cards onSelectCard={(cardId) => openModal(cardId)} />
       <Profiles />
       <Moments />
       <Sharing />
@@ -62,8 +67,13 @@ function Home() {
       <NetworkSection />
       <Enterprise />
       <FAQ />
-      <Footer onCta={openModal} />
-      <GrabYourSpotModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <ContactSection />
+      <Footer onCta={() => openModal('pvc')} />
+      <GrabYourSpotModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        initialCardId={selectedCard}
+      />
     </main>
   );
 }

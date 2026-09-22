@@ -26,12 +26,13 @@ export function Footer({ onCta }: FooterProps) {
         <div className="container footer-inner">
           <Brand />
           <div className="footer-links">
+            <a href="#cards" data-testid="footer-link-cards">Smart Cards</a>
             <a href="#profiles" data-testid="footer-link-profiles">Profiles</a>
-            <a href="#enterprise" data-testid="footer-link-enterprise">Enterprise</a>
             <a href="#faq" data-testid="footer-link-faq">FAQ</a>
-            <a href="mailto:hello@onewinq.com" data-testid="footer-link-contact">Contact</a>
+            <a href="mailto:support@onewinq.com" data-testid="footer-link-email">support@onewinq.com</a>
+            <a href="#contact" data-testid="footer-link-contact">Contact Us</a>
           </div>
-          <div className="copyright">© 2025 OneWinq</div>
+          <div className="copyright">© 2026 OneWinq</div>
         </div>
       </footer>
     </>
