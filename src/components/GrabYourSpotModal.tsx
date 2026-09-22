@@ -199,11 +199,11 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
                 <button type="submit" className="submit-spot-btn" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
-                      <Loader2 size={16} className="spinner" /> Reserving...
+                      <Loader2 size={15} className="spinner" /> Reserving...
                     </>
                   ) : (
                     <>
-                      <CreditCard size={16} /> Confirm Pre-Booking (₹{selectedCard.finalPrice.toLocaleString('en-IN')})
+                      <CreditCard size={15} /> Pre-Book Now — ₹{selectedCard.finalPrice.toLocaleString('en-IN')}
                     </>
                   )}
                 </button>
