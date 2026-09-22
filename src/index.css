@@ -1393,6 +1393,134 @@
   box-shadow: 0 10px 24px rgba(12, 10, 18, 0.25);
 }
 
+/* Responsive Mobile Rules for Smart Cards Showcase Section */
+@media (max-width: 640px) {
+  .cards-section {
+    padding: 45px 0 55px;
+  }
+
+  .cards-top-header {
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .cards-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .cards-hero-title {
+    font-size: clamp(1.8rem, 7.5vw, 2.4rem);
+    margin-top: 4px;
+    line-height: 1.05;
+  }
+
+  .cards-hero-desc {
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .launch-banner {
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .banner-badge {
+    font-size: 0.64rem;
+    padding: 3px 8px;
+  }
+
+  .banner-text {
+    font-size: 0.84rem;
+  }
+
+  .banner-right {
+    font-size: 0.72rem;
+  }
+
+  .cards-grid {
+    gap: 16px;
+  }
+
+  .pricing-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .card-visual-box {
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    transform: none;
+    box-shadow: 0 8px 20px -4px rgba(9, 7, 13, 0.15);
+  }
+
+  .pricing-card:hover .card-visual-box {
+    transform: translateY(-4px);
+  }
+
+  .visual-brand {
+    font-size: 1rem;
+  }
+
+  .visual-tap-text {
+    font-size: 0.6rem;
+  }
+
+  .card-sub-header {
+    margin-bottom: 4px;
+  }
+
+  .card-subtitle-tag {
+    font-size: 0.62rem;
+  }
+
+  .discount-tag {
+    font-size: 0.66rem;
+    padding: 2px 6px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+
+  .card-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    min-height: auto;
+  }
+
+  .price-row {
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+
+  .price-row .final-price {
+    font-size: 1.5rem;
+  }
+
+  .price-row .original-price {
+    font-size: 0.85rem;
+  }
+
+  .price-row .prebooking-label {
+    font-size: 0.58rem;
+  }
+
+  .card-prebook-btn {
+    padding: 11px 16px;
+    font-size: 0.84rem;
+    border-radius: 999px;
+  }
+}
+
+
 /* ==========================================================================
    Modal Pre-Booking Card Selector & Order Summary Styles
    ========================================================================== */
