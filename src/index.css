@@ -1733,7 +1733,7 @@
 }
 
 .modal-header {
-  margin-bottom: 22px;
+  margin-bottom: 16px;
   padding-right: 28px;
 }
 
@@ -1744,26 +1744,75 @@
   background: #f3ebfc;
   color: #7b2cbf;
   font-family: var(--app-font-mono);
-  font-size: 0.75rem;
+  font-size: 0.70rem;
   font-weight: 700;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 999px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .modal-header h2 {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: #09070d;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   letter-spacing: -0.02em;
 }
 
 .modal-header p {
-  font-size: 0.9rem;
+  font-size: 0.80rem;
   color: #64748b;
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .modal-container {
+    padding: 18px 12px;
+    border-radius: 18px;
+  }
+
+  .modal-header {
+    margin-bottom: 10px;
+    padding-right: 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 0.98rem;
+    line-height: 1.25;
+    margin-bottom: 3px;
+  }
+
+  .modal-header p {
+    font-size: 0.70rem;
+    line-height: 1.35;
+  }
+
+  .card-pill-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    width: 100%;
+  }
+
+  .card-pill {
+    padding: 5px 2px;
+    font-size: 0.65rem;
+    gap: 2px;
+    min-width: 0;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .card-pill span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-pill .pill-price {
+    font-size: 0.64rem;
+    font-weight: 700;
+  }
 }
 
 .modal-form {
