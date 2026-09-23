@@ -7,8 +7,8 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { GrabYourSpotModal } from '@/components/GrabYourSpotModal';
 
+import { SEOHead } from '@/components/SEOHead';
 import { Hero } from '@/components/sections/Hero';
-import { Ticker } from '@/components/sections/Ticker';
 import { Intro } from '@/components/sections/Intro';
 import { WhyOneWinq } from '@/components/sections/WhyOneWinq';
 import { Cards, type CardType } from '@/components/sections/Cards';
@@ -19,9 +19,22 @@ import { Sharing } from '@/components/sections/Sharing';
 import { Journey } from '@/components/sections/Journey';
 import { NetworkSection } from '@/components/sections/NetworkSection';
 import { Enterprise } from '@/components/sections/Enterprise';
-import { FAQ } from '@/components/sections/FAQ';
+import { FAQ, faqs } from '@/components/sections/FAQ';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/sections/Footer';
+
+// SEO Landing Pages
+import DigitalIdentityPage from '@/pages/seo/DigitalIdentityPage';
+import DigitalProfilePage from '@/pages/seo/DigitalProfilePage';
+import ProfessionalProfilePage from '@/pages/seo/ProfessionalProfilePage';
+import DigitalCardPage from '@/pages/seo/DigitalCardPage';
+import NfcCardPage from '@/pages/seo/NfcCardPage';
+import NetworkingPage from '@/pages/seo/NetworkingPage';
+import EnterprisePage from '@/pages/seo/EnterprisePage';
+import EnterpriseDigitalIdentityPage from '@/pages/seo/EnterpriseDigitalIdentityPage';
+import EmployeeDigitalIdentityPage from '@/pages/seo/EmployeeDigitalIdentityPage';
+import UserProfilePage from '@/pages/UserProfilePage';
+import PrivateAppRoute from '@/pages/PrivateAppRoute';
 
 import './index.css';
 
@@ -54,8 +67,46 @@ function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const homepageSchema = [
+    {
+      '@type': 'Organization',
+      '@id': 'https://onewinq.com/#organization',
+      'name': 'OneWinq',
+      'url': 'https://onewinq.com/',
+      'logo': 'https://onewinq.com/onewinq_brand_logo.png',
+      'email': 'support@onewinq.com',
+      'description': 'Digital identity and networking platform allowing users to manage Public, Private & Professional profiles and share via Smart NFC Cards.',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://onewinq.com/#website',
+      'url': 'https://onewinq.com/',
+      'name': 'OneWinq',
+      'description': 'A digital identity and networking platform.',
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://onewinq.com/#faqpage',
+      'mainEntity': faqs.map(([question, answer]) => ({
+        '@type': 'Question',
+        'name': question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <main className="page-shell">
+      <SEOHead
+        title="OneWinq – Digital Identity & Networking Platform"
+        description="Create & manage your digital identity with Public, Private & Professional profiles. Share instantly through OneWinq NFC Card & OneWinq Enterprise."
+        canonical="https://onewinq.com/"
+        keywords="digital identity platform, digital identity, digital networking platform, professional networking platform, digital profile, digital business card, NFC business card, smart digital card, professional digital identity, OneWinq Enterprise"
+        jsonLd={homepageSchema}
+      />
       <Hero onCta={() => openModal('pvc')} />
       <DemoVideoSection />
       <Intro />
@@ -89,6 +140,29 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
+        
+        {/* Dedicated SEO Landing Pages */}
+        <Route path="/digital-identity" component={DigitalIdentityPage} />
+        <Route path="/digital-profile" component={DigitalProfilePage} />
+        <Route path="/professional-profile" component={ProfessionalProfilePage} />
+        <Route path="/digital-card" component={DigitalCardPage} />
+        <Route path="/nfc-card" component={NfcCardPage} />
+        <Route path="/networking" component={NetworkingPage} />
+        <Route path="/onewinq-enterprise" component={EnterprisePage} />
+        <Route path="/enterprise-digital-identity" component={EnterpriseDigitalIdentityPage} />
+        <Route path="/employee-digital-identity" component={EmployeeDigitalIdentityPage} />
+        
+        {/* Dynamic User Profile Route */}
+        <Route path="/u/:username" component={UserProfilePage} />
+        
+        {/* Private Application Routes (NOINDEX) */}
+        <Route path="/dashboard"><PrivateAppRoute routeName="Dashboard" /></Route>
+        <Route path="/account"><PrivateAppRoute routeName="Account" /></Route>
+        <Route path="/settings"><PrivateAppRoute routeName="Settings" /></Route>
+        <Route path="/admin"><PrivateAppRoute routeName="Admin" /></Route>
+        <Route path="/login"><PrivateAppRoute routeName="Login" /></Route>
+        <Route path="/signup"><PrivateAppRoute routeName="Signup" /></Route>
+
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
