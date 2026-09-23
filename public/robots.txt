@@ -1,2 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+
+# Host
+Host: https://onewinq.com
+
+# Sitemaps
+Sitemap: https://onewinq.com/sitemap.xml
