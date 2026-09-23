@@ -621,9 +621,7 @@
   .hero-grid, .intro-grid, .mode-layout, .share-grid, .journey-intro, .network-layout, .faq-layout { grid-template-columns: 1fr; gap: 32px; }
   .hero h1 { font-size: clamp(2.4rem, 8vw, 3.8rem); line-height: 1.05; letter-spacing: -.05em; }
   .hero-copy { font-size: .98rem; max-width: 100%; margin-top: 14px; }
-  .hero-visual { min-height: 380px; margin-top: 24px; position: relative; display: flex; justify-content: center; align-items: center; }
-  .orbit { right: auto; left: 50%; transform: translateX(-50%); width: 320px; height: 320px; }
-  .profile-card { right: auto; left: 50%; transform: translateX(-50%); top: 20px; width: min(320px, 90vw); }
+  .hero-visual { display: none !important; }
   
   .section { padding: 60px 0; }
   .section-heading { display: block; margin-bottom: 28px; }
@@ -675,17 +673,7 @@
   .hero-actions { display: flex; flex-direction: row; align-items: center; justify-content: space-between; width: 100%; max-width: 100%; gap: 8px; }
   .hero-actions button, .hero-actions a, .hero-actions .header-cta, .hero-actions .button-light { flex: 1; min-width: 0; padding: 10px 6px; font-size: 0.72rem; justify-content: center; text-align: center; white-space: nowrap; }
   
-  .hero-visual { position: relative; min-height: 320px; margin-top: 15px; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-  .orbit { left: 50%; transform: translateX(-50%); top: 5px; width: 240px; height: 240px; }
-  .profile-card { position: relative; top: 0; right: auto; left: auto; margin: 0 auto; width: min(280px, 88vw); min-height: auto; padding: 16px; border-radius: 18px; transform: rotate(0deg); box-shadow: 0 10px 25px rgba(0,0,0,0.22); }
-  .profile-card .avatar { margin-top: 16px; width: 64px; height: 64px; font-size: 1.6rem; }
-  .profile-name { font-size: 1.4rem; margin: 10px 0 2px; }
-  .profile-role { font-size: 0.72rem; }
-  .profile-line { margin: 16px 0 12px; }
-  .profile-tags span { padding: 5px 8px; font-size: .58rem; }
-  .float-pill { font-size: .58rem; padding: 5px 8px; }
-  .pill-one { left: 2px; top: 5px; }
-  .pill-two { right: 2px; bottom: 5px; }
+  .hero-visual { display: none !important; }
   
   .section-heading { margin-bottom: 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
   .section-heading h2 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); line-height: 1.05; }
@@ -2160,6 +2148,807 @@
   .contact-submit-btn {
     padding: 13px 18px;
     font-size: 0.9rem;
+  }
+}
+
+/* ==========================================================================
+   OneWinq Smart NFC Tap Animation Demo Section
+   ========================================================================== */
+
+.demo-video-section {
+  padding: 100px 0;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.demo-header h2 {
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+  margin: 16px 0 12px;
+}
+
+.demo-subtitle {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.demo-stage-card {
+  max-width: 860px;
+  margin: 0 auto;
+  overflow: visible;
+  background: transparent;
+}
+
+.onewinq-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 520px;
+  margin: 0 auto;
+  overflow: visible;
+  isolation: isolate;
+  background: transparent;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+.orb-one {
+  top: 22%;
+  left: 7%;
+  width: 24px;
+  height: 24px;
+  background: rgba(112, 81, 216, 0.16);
+  animation: ambientDrift 5.6s ease-in-out infinite;
+}
+
+.orb-two {
+  top: 76%;
+  left: 22%;
+  width: 14px;
+  height: 14px;
+  background: rgba(112, 81, 216, 0.3);
+  animation: ambientDrift 4.7s -1.2s ease-in-out infinite reverse;
+}
+
+.orb-three {
+  top: 18%;
+  right: 10%;
+  width: 10px;
+  height: 10px;
+  background: rgba(150, 133, 203, 0.32);
+  animation: ambientDrift 4.2s -2.1s ease-in-out infinite;
+}
+
+.device-wrap {
+  position: absolute;
+  top: 15%;
+  left: 55%;
+  z-index: 4;
+  width: 28%;
+  height: 72%;
+  perspective: 900px;
+}
+
+.device-shadow {
+  position: absolute;
+  right: -8%;
+  bottom: -5%;
+  left: -8%;
+  height: 10%;
+  border-radius: 50%;
+  background: rgba(64, 44, 93, 0.15);
+  filter: blur(14px);
+  animation: shadowBreathe 5.6s ease-in-out infinite;
+}
+
+.phone-anim {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  border: 2px solid rgba(52, 43, 70, 0.65);
+  border-radius: 36px;
+  background: linear-gradient(145deg, #3f3a4a, #1f1b28 55%, #4d4759);
+  box-shadow:
+    0 25px 45px rgba(53, 40, 77, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.26),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.45);
+  transform: rotate(1deg);
+  animation: phoneBreath 5.6s ease-in-out infinite;
+}
+
+.phone-glass {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #fdfcff;
+}
+
+.phone-island {
+  position: absolute;
+  top: 1.6%;
+  left: 50%;
+  z-index: 10;
+  width: 34%;
+  height: 2.6%;
+  border-radius: 12px;
+  background: #27222f;
+  transform: translateX(-50%);
+}
+
+.screen-light,
+.screen-profile {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screen-light {
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(218, 205, 255, 0.56), transparent 30%),
+    linear-gradient(160deg, #f7f3ff, #ffffff 65%);
+  animation: lockScreen 5.6s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+.lock-kicker {
+  z-index: 1;
+  margin-top: -11%;
+  color: #a19bab;
+  font-family: var(--app-font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.lock-mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin: 14px 0 10px;
+  place-items: center;
+  border: 1px solid rgba(112, 81, 216, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow: 0 8px 20px rgba(91, 62, 149, 0.1);
+}
+
+.lock-mark svg {
+  width: 22px;
+  height: 22px;
+  stroke: #7b2cbf;
+}
+
+.lock-title {
+  z-index: 1;
+  margin: 0;
+  color: #393143;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.lock-subtitle {
+  z-index: 1;
+  margin: 4px 0 0;
+  color: #9e96a8;
+  font-size: 0.72rem;
+}
+
+.screen-profile {
+  justify-content: flex-start;
+  padding: 12% 8% 6%;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(224, 214, 255, 0.68), transparent 28%),
+    linear-gradient(160deg, #fbfaff 0%, #f7f5fb 100%);
+  opacity: 0;
+  transform: scale(1.055);
+  transform-origin: 50% 48%;
+  animation: profileReveal 5.6s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+.profile-topline {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  color: #a69daf;
+  font-family: var(--app-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-topline strong {
+  color: #7b2cbf;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+}
+
+.profile-avatar {
+  position: relative;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  margin-top: 6%;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.86);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b2cbf, #a54dc1);
+  box-shadow: 0 8px 20px rgba(95, 73, 145, 0.2);
+}
+
+.profile-avatar span {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.profile-name {
+  margin: 6px 0 0;
+  color: #2e273b;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.profile-role {
+  margin: 2px 0 0;
+  color: #7b2cbf;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.profile-bio {
+  width: 96%;
+  margin: 8px 0 0;
+  color: #82798d;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.profile-connect {
+  width: 85%;
+  margin-top: 12px;
+  padding: 6px 0;
+  border-radius: 999px;
+  background: #0c0a12;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.profile-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  color: #8f86a1;
+}
+
+.profile-icons svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+}
+
+.tap-ripple {
+  position: absolute;
+  top: 37%;
+  left: -14%;
+  z-index: 12;
+  width: 127%;
+  height: 28%;
+  border: 2px solid rgba(112, 81, 216, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(112, 81, 216, 0.08);
+  opacity: 0;
+  transform: scale(0.65);
+  animation: phoneRipple 5.6s cubic-bezier(0.2, 0.75, 0.3, 1) infinite;
+}
+
+.nfc-signals {
+  position: absolute;
+  top: 36%;
+  left: 48%;
+  z-index: 8;
+  width: 60px;
+  height: 80px;
+  opacity: 0;
+  transform: rotate(-15deg);
+  animation: signalPulse 5.6s ease-out infinite;
+}
+
+.nfc-signals span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 42%;
+  height: 86%;
+  border: 2px solid #7b2cbf;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 0 100% 0 0;
+  opacity: 0.72;
+  transform: rotate(45deg);
+}
+
+.nfc-signals span:nth-child(2) {
+  right: 19%;
+  bottom: 8%;
+  width: 30%;
+  height: 65%;
+  opacity: 0.5;
+}
+
+.nfc-signals span:nth-child(3) {
+  right: 37%;
+  bottom: 18%;
+  width: 18%;
+  height: 43%;
+  opacity: 0.34;
+}
+
+.nfc-dot {
+  position: absolute;
+  right: 1%;
+  bottom: 5%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7b2cbf;
+  box-shadow: 0 0 0 4px rgba(123, 44, 191, 0.15);
+}
+
+.card-shadow {
+  position: absolute;
+  top: 57%;
+  left: 2%;
+  z-index: 1;
+  width: 31%;
+  height: 9%;
+  border-radius: 50%;
+  background: rgba(64, 44, 93, 0.15);
+  filter: blur(10px);
+  opacity: 0;
+  animation: cardShadow 5.6s ease-in-out infinite;
+}
+
+.nfc-card-anim {
+  position: absolute;
+  top: 38%;
+  left: 7%;
+  z-index: 10;
+  width: 32%;
+  height: 24%;
+  padding: 14px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(211, 196, 255, 0.42), transparent 36%),
+    linear-gradient(120deg, #1b132c 0%, #3f256a 47%, #7b2cbf 100%);
+  box-shadow:
+    10px 20px 35px rgba(65, 44, 104, 0.28),
+    inset 0 1px 2px rgba(255, 255, 255, 0.32);
+  color: #fff;
+  transform: translate3d(-5%, 0, 0) rotate(-11deg);
+  transform-origin: 65% 50%;
+  animation: cardJourney 5.6s cubic-bezier(0.67, 0, 0.18, 1) infinite;
+}
+
+.card-brand {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--app-font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.card-chip {
+  position: relative;
+  z-index: 1;
+  width: 26px;
+  height: 18px;
+  margin-top: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12));
+}
+
+.card-nfc {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.75;
+}
+
+.card-nfc span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #fff;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 0 100% 0 0;
+  transform: rotate(45deg);
+}
+
+.floating-copy {
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  z-index: 4;
+  color: #7b2cbf;
+  font-family: var(--app-font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: floatingCopy 5.6s ease-in-out infinite;
+}
+
+@keyframes cardJourney {
+  0%, 8% {
+    opacity: 0;
+    transform: translate3d(-20%, 4%, 0) rotate(-14deg) scale(0.88);
+  }
+  14% {
+    opacity: 1;
+    transform: translate3d(-4%, 2%, 0) rotate(-11deg) scale(0.92);
+  }
+  32% {
+    opacity: 1;
+    transform: translate3d(78%, -7%, 0) rotate(-4deg) scale(0.96);
+  }
+  42% {
+    opacity: 1;
+    transform: translate3d(97%, -10%, 0) rotate(-1deg) scale(0.99);
+  }
+  48% {
+    opacity: 1;
+    transform: translate3d(91%, -7%, 0) rotate(-2deg) scale(0.98);
+  }
+  53% {
+    opacity: 1;
+    transform: translate3d(97%, -10%, 0) rotate(-1deg) scale(0.99);
+  }
+  72%, 100% {
+    opacity: 0;
+    transform: translate3d(265%, -52%, 0) rotate(12deg) scale(0.82);
+  }
+}
+
+@keyframes cardShadow {
+  0%, 11%, 72%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  25%, 57% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes signalPulse {
+  0%, 28%, 60%, 100% {
+    opacity: 0;
+    transform: rotate(-15deg) scale(0.65);
+  }
+  34% {
+    opacity: 1;
+    transform: rotate(-15deg) scale(0.82);
+  }
+  43% {
+    opacity: 0.3;
+    transform: rotate(-15deg) scale(1.02);
+  }
+  49% {
+    opacity: 0.95;
+    transform: rotate(-15deg) scale(0.9);
+  }
+  56% {
+    opacity: 0;
+    transform: rotate(-15deg) scale(1.14);
+  }
+}
+
+@keyframes phoneRipple {
+  0%, 43%, 100% {
+    opacity: 0;
+    transform: scale(0.62);
+  }
+  48% {
+    opacity: 0.8;
+    transform: scale(0.73);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes lockScreen {
+  0%, 41% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  51%, 100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes profileReveal {
+  0%, 42% {
+    opacity: 0;
+    transform: scale(1.055);
+  }
+  54%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatingCopy {
+  0%, 57% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  67%, 89% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+  96%, 100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes phoneBreath {
+  0%, 100% {
+    transform: rotate(1deg) translateY(0);
+  }
+  45% {
+    transform: rotate(1deg) translateY(-4px);
+  }
+}
+
+@keyframes shadowBreathe {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(0.92);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .demo-video-section {
+    padding: 50px 0;
+  }
+
+  .demo-header h2 {
+    font-size: clamp(2rem, 7.5vw, 2.8rem);
+    line-height: 1.05;
+    margin: 10px 0 8px;
+  }
+
+  .demo-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    margin-bottom: 24px;
+    padding: 0 8px;
+  }
+
+  .onewinq-stage {
+    aspect-ratio: 4 / 3.2;
+    min-height: 310px;
+    max-height: 360px;
+  }
+
+  .device-wrap {
+    width: 46%;
+    height: 82%;
+    left: 45%;
+    top: 9%;
+  }
+
+  .phone-anim {
+    border-radius: 26px;
+    padding: 4px;
+  }
+
+  .phone-glass {
+    border-radius: 22px;
+  }
+
+  .phone-island {
+    width: 36%;
+    height: 3%;
+    border-radius: 8px;
+  }
+
+  .nfc-card-anim {
+    width: 48%;
+    height: 25%;
+    top: 36%;
+    left: 4%;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .card-brand {
+    font-size: 0.72rem;
+  }
+
+  .card-chip {
+    width: 18px;
+    height: 12px;
+    margin-top: 6px;
+    border-radius: 3px;
+  }
+
+  .card-nfc {
+    right: 8px;
+    bottom: 8px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .lock-kicker {
+    font-size: 0.58rem;
+  }
+
+  .lock-mark {
+    width: 34px;
+    height: 34px;
+    margin: 8px 0 6px;
+    border-radius: 10px;
+  }
+
+  .lock-mark svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .lock-title {
+    font-size: 0.82rem;
+  }
+
+  .lock-subtitle {
+    font-size: 0.58rem;
+    margin-top: 2px;
+  }
+
+  .screen-profile {
+    padding: 10% 6% 4%;
+  }
+
+  .profile-topline {
+    font-size: 0.54rem;
+  }
+
+  .profile-topline strong {
+    font-size: 0.56rem;
+  }
+
+  .profile-avatar {
+    width: 42px;
+    height: 42px;
+    margin-top: 4%;
+  }
+
+  .profile-avatar span {
+    font-size: 0.85rem;
+  }
+
+  .profile-name {
+    font-size: 0.85rem;
+    margin: 4px 0 0;
+  }
+
+  .profile-role {
+    font-size: 0.60rem;
+    margin-top: 1px;
+  }
+
+  .profile-bio {
+    font-size: 0.56rem;
+    line-height: 1.25;
+    margin: 4px 0 0;
+  }
+
+  .profile-connect {
+    font-size: 0.58rem;
+    padding: 4px 0;
+    margin-top: 8px;
+    border-radius: 6px;
+  }
+
+  .profile-icons {
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .profile-icons svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .floating-copy {
+    font-size: 0.68rem;
+    right: 4%;
+    bottom: 3%;
+  }
+}
+
+@media (max-width: 480px) {
+  .onewinq-stage {
+    aspect-ratio: 4 / 3.4;
+    min-height: 290px;
+  }
+
+  .device-wrap {
+    width: 52%;
+    left: 42%;
+  }
+
+  .nfc-card-anim {
+    width: 50%;
+    left: 2%;
+  }
+
+  .profile-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .profile-avatar span {
+    font-size: 0.75rem;
+  }
+
+  .profile-name {
+    font-size: 0.78rem;
+  }
+
+  .profile-bio {
+    font-size: 0.52rem;
+  }
+
+  .profile-connect {
+    font-size: 0.54rem;
+    padding: 3px 0;
   }
 }
 

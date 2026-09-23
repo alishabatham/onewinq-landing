@@ -12,6 +12,7 @@ import { Ticker } from '@/components/sections/Ticker';
 import { Intro } from '@/components/sections/Intro';
 import { WhyOneWinq } from '@/components/sections/WhyOneWinq';
 import { Cards, type CardType } from '@/components/sections/Cards';
+import { DemoVideoSection } from '@/components/sections/DemoVideoSection';
 import { Profiles } from '@/components/sections/Profiles';
 import { Moments } from '@/components/sections/Moments';
 import { Sharing } from '@/components/sections/Sharing';
@@ -56,7 +57,7 @@ function Home() {
   return (
     <main className="page-shell">
       <Hero onCta={() => openModal('pvc')} />
-      <Ticker />
+      <DemoVideoSection />
       <Intro />
       <WhyOneWinq />
       <Cards onSelectCard={(cardId) => openModal(cardId)} />

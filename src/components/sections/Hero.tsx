@@ -22,9 +22,7 @@ export function Hero({ onCta }: HeroProps) {
               See how it works <ArrowDownRight size={15} />
             </a>
           </div>
-          <div className="hero-note">
-            <b /> Built for the many ways you show up.
-          </div>
+
         </div>
         <div className="hero-visual" aria-label="OneWinq profile preview">
           <div className="orbit" />
@@ -40,7 +38,6 @@ export function Hero({ onCta }: HeroProps) {
           </div>
         </div>
       </div>
-      <div className="hero-scroll">Scroll to meet yourself <ArrowDownRight size={12} /></div>
     </section>
   );
 }
