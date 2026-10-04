@@ -8,7 +8,7 @@
     {
       "source": "/:path*",
       "destination": "https://one-winq-pi.vercel.app/:path*"
-    }
+    },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
    
   ]
