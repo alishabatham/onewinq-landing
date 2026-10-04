@@ -17,6 +17,8 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const [paymentDetails, setPaymentDetails] = useState<{ paymentId?: string; orderId?: string } | null>(null);
+
   useEffect(() => {
     if (initialCardId) {
       setSelectedCardId(initialCardId);
@@ -33,43 +35,104 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
     setErrorMessage(null);
 
     try {
-      const response = await fetch('/api/send-email', {
+      // 1. Create Razorpay order on backend
+      const orderResponse = await fetch('/api/razorpay/create-order', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          amount: selectedCard.finalPrice,
           name,
           email,
-          message,
           cardType: selectedCard.id,
           cardName: selectedCard.name,
           originalPrice: selectedCard.originalPrice,
           discount: selectedCard.discount,
           finalPrice: selectedCard.finalPrice,
+          message,
         }),
       });
 
-      const contentType = response.headers.get('content-type') || '';
-      let data: any = {};
+      const orderData = await orderResponse.json();
 
-      if (contentType.includes('application/json')) {
-        data = await response.json();
-      } else {
-        const text = await response.text();
-        console.error('Server returned non-JSON response:', text);
-        throw new Error('Server returned invalid response. Please try again.');
+      if (!orderResponse.ok || !orderData.success) {
+        throw new Error(orderData.error || 'Failed to initialize Razorpay payment order.');
       }
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Failed to send pre-booking reservation.');
+      // 2. Open Razorpay Modal
+      if (typeof window.Razorpay === 'undefined') {
+        throw new Error('Razorpay SDK failed to load. Please refresh the page and try again.');
       }
 
-      setSubmitted(true);
+      const options = {
+        key: orderData.keyId || import.meta.env.VITE_RAZORPAY_KEY_ID,
+        amount: orderData.amount,
+        currency: orderData.currency || 'INR',
+        name: 'OneWinq',
+        description: `Order ${selectedCard.name}`,
+        order_id: orderData.orderId,
+        prefill: {
+          name: name,
+          email: email,
+        },
+        theme: {
+          color: '#7b2cbf',
+        },
+        handler: async function (response: any) {
+          setIsSubmitting(true);
+          try {
+            // 3. Verify Payment on Backend
+            const verifyResponse = await fetch('/api/razorpay/verify-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                name,
+                email,
+                message,
+                cardType: selectedCard.id,
+                cardName: selectedCard.name,
+                originalPrice: selectedCard.originalPrice,
+                discount: selectedCard.discount,
+                finalPrice: selectedCard.finalPrice,
+              }),
+            });
+
+            const verifyData = await verifyResponse.json();
+
+            if (!verifyResponse.ok || !verifyData.success) {
+              throw new Error(verifyData.error || 'Payment verification failed.');
+            }
+
+            setPaymentDetails({
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+            });
+            setSubmitted(true);
+          } catch (err: any) {
+            console.error('Payment Verification Error:', err);
+            setErrorMessage(err?.message || 'Payment verification failed. Please contact support.');
+          } finally {
+            setIsSubmitting(false);
+          }
+        },
+        modal: {
+          ondismiss: function () {
+            setIsSubmitting(false);
+          },
+        },
+      };
+
+      const razorpayCheckout = new window.Razorpay(options);
+      razorpayCheckout.on('payment.failed', function (response: any) {
+        setIsSubmitting(false);
+        setErrorMessage(response.error?.description || 'Payment failed. Please try again.');
+      });
+      razorpayCheckout.open();
     } catch (err: any) {
-      console.error('Email submission error:', err);
-      setErrorMessage(err?.message || 'Failed to send email. Please try again.');
-    } finally {
+      console.error('Razorpay Order Error:', err);
+      setErrorMessage(err?.message || 'Failed to start payment process. Please try again.');
       setIsSubmitting(false);
     }
   };
@@ -77,6 +140,7 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
   const handleResetAndClose = () => {
     setSubmitted(false);
     setErrorMessage(null);
+    setPaymentDetails(null);
     setName('');
     setEmail('');
     setMessage('');
@@ -95,17 +159,23 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
             <div className="success-icon-wrap">
               <CheckCircle2 size={48} className="success-icon" />
             </div>
-            <h2>Pre-Booking Reserved!</h2>
+            <h2>Order Placed & Paid! 🎉</h2>
             <p>
-              Thank you, <strong>{name}</strong>! Your <strong>{selectedCard.name}</strong> pre-booking with a <strong>₹100 discount</strong> has been recorded. We will contact you at <strong>{email}</strong> prior to launch!
+              Thank you, <strong>{name}</strong>! Your payment for <strong>{selectedCard.name}</strong> has been successfully processed.
             </p>
 
+            {paymentDetails?.paymentId && (
+              <div style={{ background: '#f3e8ff', border: '1px solid #d8b4fe', padding: '10px 14px', borderRadius: '10px', margin: '14px 0', fontSize: '13px', color: '#581c87' }}>
+                💳 <strong>Payment ID:</strong> <code>{paymentDetails.paymentId}</code>
+              </div>
+            )}
+
             <div className="success-summary-pill">
-              Selected: <strong>{selectedCard.name}</strong> (Payable on Launch: <strong>₹{selectedCard.finalPrice}</strong>)
+              Selected: <strong>{selectedCard.name}</strong> (Amount Paid: <strong>₹{selectedCard.finalPrice}</strong>)
             </div>
 
             <div className="success-badge">
-              Official Launch: 01 October 2026
+              Confirmation email sent to <strong>{email}</strong>
             </div>
             <button className="button-dark modal-done-btn" onClick={handleResetAndClose}>
               Back to OneWinq
@@ -115,8 +185,8 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
           <div className="modal-form-wrap">
             <div className="modal-header">
 
-              <h2>Pre-Book Your NFC Card</h2>
-              <p>Reserve your custom physical OneWinq Smart NFC Card and get ₹100 instant discount before official launch.</p>
+              <h2>Order Your OneWinq NFC Card</h2>
+              <p>Order your custom physical OneWinq Smart NFC Card with free shipping across India.</p>
             </div>
 
             {errorMessage && (
@@ -145,16 +215,8 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
 
             {/* Order Price Breakdown Box */}
             <div className="order-summary-box">
-              <div className="summary-row">
-                <span>{selectedCard.name} Base Price</span>
-                <span className="original-strikethrough">₹{selectedCard.originalPrice.toLocaleString('en-IN')}</span>
-              </div>
-              <div className="summary-row discount-row">
-                <span><Tag size={13} /> Pre-Booking Discount</span>
-                <span className="discount-amt">- ₹{selectedCard.discount} OFF</span>
-              </div>
               <div className="summary-row total-row">
-                <span>Total Payable on Launch</span>
+                <span>Total Amount Payable</span>
                 <span className="final-total">₹{selectedCard.finalPrice.toLocaleString('en-IN')}</span>
               </div>
             </div>
@@ -199,17 +261,17 @@ export function GrabYourSpotModal({ isOpen, onClose, initialCardId = 'pvc' }: Gr
                 <button type="submit" className="submit-spot-btn" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
-                      <Loader2 size={15} className="spinner" /> Reserving...
+                      <Loader2 size={15} className="spinner" /> Processing Payment...
                     </>
                   ) : (
                     <>
-                      <CreditCard size={15} /> Pre-Book Now — ₹{selectedCard.finalPrice.toLocaleString('en-IN')}
+                      <CreditCard size={15} /> Pay & Pre-Book Now — ₹{selectedCard.finalPrice.toLocaleString('en-IN')}
                     </>
                   )}
                 </button>
-                {/* <p className="routing-note">
-                  🔒 No payment needed today. Payable when your card ships.
-                </p> */}
+                <p className="routing-note" style={{ textAlign: 'center', fontSize: '12px', color: '#76667d', marginTop: '8px' }}>
+                  🔒 Secure 256-bit Encrypted Payment via Razorpay
+                </p>
               </div>
             </form>
           </div>

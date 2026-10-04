@@ -18,9 +18,9 @@ export const CARD_OPTIONS: CardOption[] = [
     id: 'pvc',
     name: 'PVC Card',
     subTitle: 'LIGHTWEIGHT EVERYDAY CARRY',
-    originalPrice: 500,
-    discount: 100,
-    finalPrice: 400,
+    originalPrice: 499,
+    discount: 0,
+    finalPrice: 499,
     description: 'Clean, durable, and ready for every introduction.',
     visualClass: 'card-preview-pvc',
   },
@@ -28,9 +28,9 @@ export const CARD_OPTIONS: CardOption[] = [
     id: 'wooden',
     name: 'Wooden Card',
     subTitle: 'NATURAL STATEMENT PIECE',
-    originalPrice: 1000,
-    discount: 100,
-    finalPrice: 900,
+    originalPrice: 999,
+    discount: 0,
+    finalPrice: 999,
     description: 'A warm, tactile card for a memorable first impression.',
     visualClass: 'card-preview-wooden',
   },
@@ -38,9 +38,9 @@ export const CARD_OPTIONS: CardOption[] = [
     id: 'metallic',
     name: 'Metallic Card',
     subTitle: 'PREMIUM LASTING FINISH',
-    originalPrice: 1500,
-    discount: 100,
-    finalPrice: 1400,
+    originalPrice: 1499,
+    discount: 0,
+    finalPrice: 1499,
     description: 'A refined metal finish for the moments that matter.',
     visualClass: 'card-preview-metallic',
   }
@@ -82,14 +82,14 @@ export function Cards({ onSelectCard }: CardsProps) {
           </div>
         </div>
 
-        {/* Launch Pre-Booking Banner */}
+        {/* Smart NFC Card Banner */}
         <div className="launch-banner">
           <div className="banner-left">
-            <span className="banner-badge">LAUNCH PRE-BOOKING</span>
-            <span className="banner-text">Save ₹100 on every card</span>
+            <span className="banner-badge">SMART NFC CARDS</span>
+            <span className="banner-text">Instant profile sharing with a single tap</span>
           </div>
           <div className="banner-right">
-            Available until 01 October 2026
+            Free Delivery Across India
           </div>
         </div>
 
@@ -111,7 +111,6 @@ export function Cards({ onSelectCard }: CardsProps) {
               {/* Card Meta & Subtitle */}
               <div className="card-sub-header">
                 <span className="card-subtitle-tag">{card.subTitle}</span>
-                <span className="discount-tag">₹100 OFF</span>
               </div>
 
               {/* Title & Description */}
@@ -120,18 +119,16 @@ export function Cards({ onSelectCard }: CardsProps) {
 
               {/* Pricing Row */}
               <div className="price-row">
-                <span className="original-price">₹{card.originalPrice.toLocaleString('en-IN')}</span>
                 <span className="final-price">₹{card.finalPrice.toLocaleString('en-IN')}</span>
-                <span className="prebooking-label">PRE-BOOKING</span>
               </div>
 
               {/* Action Button */}
               <button
                 className="card-prebook-btn"
                 onClick={() => onSelectCard(card.id)}
-                data-testid={`button-prebook-${card.id}`}
+                data-testid={`button-order-${card.id}`}
               >
-                <span>Pre-book this card</span>
+                <span>Order this card</span>
                 <ArrowRight size={15} />
               </button>
             </div>

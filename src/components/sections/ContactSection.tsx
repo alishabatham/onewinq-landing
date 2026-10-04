@@ -162,7 +162,7 @@ export function ContactSection() {
                     className="contact-select-input"
                   >
                     <option value="NFC Card Inquiry">NFC Card Order Inquiry</option>
-                    <option value="Pre-Booking Question">Pre-Booking Special Offer Question</option>
+                    <option value="Card Order Question">Card Order & Delivery Question</option>
                     <option value="Enterprise / Bulk Order">Enterprise / Bulk Card Orders</option>
                     <option value="Technical Support">Technical & Profile Support</option>
                     <option value="Other">Other Query</option>

@@ -32,6 +32,10 @@ const PrebookingSchema = new mongoose.Schema({
   originalPrice: { type: Number },
   discount: { type: Number },
   finalPrice: { type: Number },
+  razorpayOrderId: { type: String },
+  razorpayPaymentId: { type: String },
+  razorpaySignature: { type: String },
+  paymentStatus: { type: String, default: 'pending' },
   createdAt: { type: Date, default: Date.now },
 });
 
