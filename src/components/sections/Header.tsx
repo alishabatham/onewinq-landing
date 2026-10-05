@@ -33,7 +33,7 @@ export function Header({ onCta }: HeaderProps) {
             <a href="#sharing" data-testid="link-sharing">Sharing</a>
             <a href="#contact" data-testid="link-contact">Contact Us</a>
           </nav>
-          <button className="header-cta" onClick={() =>   window.location.href = "/login";} data-testid="button-get-started">
+          <button className="header-cta" onClick={() =>   window.location.href = "/login"} data-testid="button-get-started">
             Get started <ArrowRight size={14} />
           </button>
           <button
