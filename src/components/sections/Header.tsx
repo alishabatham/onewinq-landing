@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { Brand } from './Brand';
-import { useNavigate } from "react-router-dom";
+
 interface HeaderProps {
   onCta: () => void;
 }
@@ -12,7 +12,7 @@ function scrollToId(id: string) {
 
 export function Header({ onCta }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-const navigation = useNavigate();
+
   const navigate = (id: string) => {
     setMenuOpen(false);
     scrollToId(id);
@@ -33,7 +33,7 @@ const navigation = useNavigate();
             <a href="#sharing" data-testid="link-sharing">Sharing</a>
             <a href="#contact" data-testid="link-contact">Contact Us</a>
           </nav>
-          <button className="header-cta" onClick={() => navigation("/login")} data-testid="button-get-started">
+          <button className="header-cta" onClick={() =>   window.location.href = "/login";} data-testid="button-get-started">
             Get started <ArrowRight size={14} />
           </button>
           <button
